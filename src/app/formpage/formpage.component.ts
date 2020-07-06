@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class FormpageComponent implements OnInit {
   iter: number= 0;
   myForm: FormGroup;
-  productList: Array<object>;
+  productList: [];
   constructor(private fb: FormBuilder ) { 
     this.myForm= this.fb.group({
       'name': ['', Validators.required],

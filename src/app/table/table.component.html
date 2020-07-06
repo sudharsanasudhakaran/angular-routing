@@ -1,1 +1,25 @@
-<p>table works!</p>
+<div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="color:white">
+        <thead>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Stocks</td>
+         </thead>
+         <tbody>
+          <tr *ngFor = "let it of dataList; let i = index">
+
+              <td>
+                  {{it.name}}
+              </td>
+              <td>
+                  {{it.price}}
+              </td>
+              <td>
+                  {{it.stock}}
+              </td>
+          </tr>
+      </tbody>    
+      </table>
+    </div>
+  </div>
