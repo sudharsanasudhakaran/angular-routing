@@ -1,7 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { fn, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { empty } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-formpage',
@@ -9,38 +8,23 @@ import { empty } from 'rxjs';
   styleUrls: ['./formpage.component.css']
 })
 export class FormpageComponent implements OnInit {
-  userForm;
-  userList: Array<any>= [];
-  requirementMessage: string= "";
-  callForm(fb: FormBuilder){
-    this.userForm= this.fb.group
-    ({
-      'name': fb.control('', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]),
-      'price': fb.control('', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]),
-      'stonk': fb.control('', [Validators.required, Validators.maxLength(20), Validators.minLength(6)]),
-
+  iter: number= 0;
+  myForm: FormGroup;
+  productList: Array<object>;
+  constructor(private fb: FormBuilder ) { 
+    this.myForm= this.fb.group({
+      'name': ['', Validators.required],
+      'price': ['',[ Validators.required]],
+      'stock': ['',[ Validators.required]]
     })
   }
-  constructor() {this.callForm(fb) }
 
-  ngOnInit(){
+  ngOnInit(): void {
   }
-  onSubmit(form: FormGroup) {
-    //check required fields
 
-     if(!form.value.name.localeCompare('')){
-      window.scroll(0, 0);
-      this.requirementMessage= "Name is a required field";
+  submit(form: FormGroup,){
+    console.log(form, form.value.name.valid , form.value.price.valid, form.value.stock.valid)
+    if(form.status === "VALID"){
     }
-   
-  }
-
-  formReset(formL: FormGroup){
-    this.userForm.reset(formL)
-  }
-  delete(index: number){
-    console.log("here")
-    this.userList.splice(index, 1);
   }
 }
-
