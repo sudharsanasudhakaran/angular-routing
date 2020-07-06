@@ -66,10 +66,10 @@
   <title>Document</title>
 </head>
 <body>
-<div class="card shadow mb-4">
-  <div class="card-header py-3">
-    <h4 class="m-0 font-weight-bold text-secondary">Enter the product details</h4>
-  </div>
+
+
+    <h4 class=" font-weight text-secondary">Enter the product details</h4>
+  
 
       <form [formGroup]="myForm" (submit)="submit(myForm)">
           <div class="form-group">
@@ -82,9 +82,9 @@
               <label for="name">Stock: </label>  <input id="textInp" class="form-control"   formControlName="stock" name="stock" required>
           </div>
           <div >
-              <button class="btn btn-primary" type="submit">Send</button>
+              <button class="btn btn-secondary" type="submit">Submit</button>
           </div>
       </form>
-</div>
+
 </body>
 </html>
