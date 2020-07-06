@@ -58,26 +58,33 @@
 </html>
 
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-secondary">Enter the product details</h6>
+    <h4 class="m-0 font-weight-bold text-secondary">Enter the product details</h4>
   </div>
 
       <form [formGroup]="myForm" (submit)="submit(myForm)">
           <div class="form-group">
               <label for="name">Name: </label>  <input id="textInp" class="form-control"   formControlName="name" name="name" required>
-            </div>
+          </div>
           <div class="form-group">
               <label for="name">Price </label>  <input id="textInp" class="form-control"   formControlName="price" name="price" required>
-            </div>
+          </div>
           <div class="form-group">
               <label for="name">Stock: </label>  <input id="textInp" class="form-control"   formControlName="stock" name="stock" required>
-            </div>
-            <div >
+          </div>
+          <div >
               <button class="btn btn-primary" type="submit">Send</button>
-            </div>
+          </div>
       </form>
-
- 
 </div>
-
+</body>
+</html>
