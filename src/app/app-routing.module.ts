@@ -7,7 +7,7 @@ import { FormpageComponent } from "./formpage/formpage.component";
 import { TableComponent } from "./table/table.component";
 const routes: Routes = [
   {
-    path: "",
+    path: "home",
     component: HomeComponent,
   },
   {

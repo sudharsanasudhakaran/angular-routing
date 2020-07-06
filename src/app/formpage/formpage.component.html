@@ -1,18 +1,58 @@
-<div class="container">
-    <div class="row">
-         <form [formGroup]="userForm" (submit)="displayForm()">
-              <div class="col-lg-6 input-group">
-                   <label for="">User Name</label>
-                   <input type="text" class="form-control" formControlName="username">
-              </div>
-              <div class="col-lg-6">
-                   <label for="">Fav Food</label>
-                   <br>
-                   <span *ngFor="let food of favFood">
-                        <input  type="checkbox" [value]="food.value" (change)="checkBoxChange($event)">{{food.name}}
-                   </span>
-              </div>
-              <input type="submit" value="Submit">
-         </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    
+    <div id="form-half" style="margin-left: 2px;">
+    <p [innerHTML]="requirementMessage" style="color: red"></p>
+      <form  [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+        <div class="form-group">
+          <label for="name">Name: </label>  <input id="textInp" class="form-control" [ngClass]="{red:(!userForm.get('name').valid && userForm.get('name').dirty )}"  formControlName="name" name="name" placeholder="eg: Sudharsh" required>
+          <span class="ss" *ngIf="!userForm.get('name').valid && userForm.get('name').dirty"> &nbsp;&nbsp;<small>name should have 6-20 characters</small> </span>
+        </div>
+        <div class="form-group">
+          <label for="name">Price: </label>  <input id="textInp" class="form-control" [ngClass]="{red:(!userForm.get('price').valid && userForm.get('price').dirty )}"  formControlName="price" name="price" placeholder="eg: 20000" required>
+          <span class="ss" *ngIf="!userForm.get('price').valid && userForm.get('price').dirty"> &nbsp;&nbsp;<small>Enter valid price</small> </span>
+        </div>
+        <div class="form-group">
+          <label for="name">Stock: </label>  <input id="textInp" class="form-control" [ngClass]="{red:(!userForm.get('stonk').valid && userForm.get('stonk').dirty )}"  formControlName="stonk" name="stonk" placeholder="eg:300 points" required>
+          <span class="ss" *ngIf="!userForm.get('stonk').valid && userForm.get('stonk').dirty"> &nbsp;&nbsp;<small>Enter valid stock points</small> </span>
+        </div>
+        <br>
+        <div >
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
     </div>
-</div>
+    
+    <div id="table-half">
+      <table class="table" style="background-color: #557A95;">
+       
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stocks</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let user of userList; let i= index">
+            <td>{{user.name}}</td>
+            <td>{{user.price}}</td>
+            <td>{{user.stonk}}</td>
+            <!-- <td *ngFor="let iter of user.address">{{iter.door_no}}, {{iter.street}}, {{iter.zipcode}}</td> -->
+            <td><button (click)="delete(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
